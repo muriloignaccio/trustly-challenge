@@ -1,9 +1,5 @@
 import { api } from "../services/api";
-
-export interface TimeZone {
-  timeZoneName: string;
-  timeZoneAbbreviation: string;
-}
+import { TimeZone } from "../types";
 
 export async function getAllTimeZones() {
   const { data } = await api.get('/timezone');
@@ -22,9 +18,9 @@ export async function getAllTimeZones() {
 export async function getTimeZoneByAbbreviation(abbreviation: string) {
   const { data } = await api.get(`/json/${abbreviation}/now`);
 
-  const { currentDateTime, utcOffset, dayOfTheWeek, timeZoneName } = data;
+  const { currentDateTime, utcOffset, dayOfTheWeek } = data;
 
-  const timeZone = { currentDateTime, utcOffset, dayOfTheWeek, timeZoneName };
+  const timeZone = { currentDateTime, utcOffset, dayOfTheWeek };
 
   return timeZone;
 }
