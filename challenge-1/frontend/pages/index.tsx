@@ -47,6 +47,7 @@ export default function Home() {
           <TimeZoneTable timeZoneData={selectedTimeZone} />
         ) : (
           <>
+          {/* The renderization bellow happens because not all the abbreviations are found by the API */}
             {IsTimeZoneEmpty(selectedTimeZone) && (
               <Alert mt={5} status="error">
                 <AlertIcon />
